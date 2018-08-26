@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  <bean id="helloController" class="ru.ach.lab.webapp.ctrl.HelloController"/>
+
+  <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+    <property name="urlMap">
+      <map>
+        <entry key="/hello.do">
+          <ref bean="helloController"/>
+        </entry>
+      </map>
+    </property>
+  </bean>
+
+  <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    <property name="cache" value="true"/>
+    <property name="prefix" value="/WEB-INF/jsp/"/>
+    <property name="suffix" value=".jsp"/>
+    <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+  </bean>
+</beans>
